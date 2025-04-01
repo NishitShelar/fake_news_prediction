@@ -1,9 +1,15 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import joblib
 import numpy as np
 import re  # Importing the re module for regular expressions
 
 app = Flask(__name__)
+# Allow CORS for all origins (not recommended for production)
+CORS(app)
+
+# OR to only allow your specific frontend domain
+CORS(app, origins=["https://kzmqdm326ijhz7g3paoh.lite.vusercontent.net"])
 
 # Load the saved model and vectorizer
 model = joblib.load('naive_bayes_model.pkl')
